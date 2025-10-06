@@ -13,11 +13,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: configure
-      run: ./configure
-    - name: make
-      run: make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+    - name: Install toolchain
+      run: sudo apt-get update && sudo apt-get install -y clang
+    - name: Build demo
+      working-directory: pricedivergencemonitor
+      run: |
+        clang++ -std=c++20 -O2 -Wall -Wextra -pedantic \
+          PriceDivergenceMonitor.cpp demo.cpp \
+          -o demo
+    - name: Run demo
+      working-directory: pricedivergencemonitor
+      run: ./demo
