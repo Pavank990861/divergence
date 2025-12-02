@@ -131,16 +131,20 @@ class ContentManager {
 - Generates HTML for content cards
 - Updates the DOM with content grid
 
-##### `createContentCard(item)`
+##### `createContentCard(item, hideTitle = false)`
 - Creates HTML structure for each content card
-- Includes: title, category badge, preview text, tags, date, action buttons
+- Includes: title (conditionally hidden), preview text, tags, date, action buttons
 - Adds priority indicator (colored dot)
 - Handles click events for viewing/editing
+- **Accepts `hideTitle` parameter**: When true, hides the title element
+- Used in conjunction with category filtering to hide titles when category is selected
 
 ##### `filterContent()`
 - Combines search query and category filter
 - Applies sorting
 - Re-renders filtered content
+- **Hides titles** when a category filter is selected (not "All Categories")
+- Shows titles again when "All Categories" is selected
 
 ##### `editContent(id)` / `deleteContent(id)`
 - Navigation functions
@@ -188,6 +192,12 @@ class ContentManager {
 - Hides toolbar and save button
 - Changes preview button to edit button
 
+##### Focus/Blur Event Handlers (Title Input)
+- **On Focus**: Hides all other form fields (Category, Tags, Status, Priority, Dates, URLs) when user focuses on title input
+- **On Blur**: Shows all form fields again when user clicks away from title input
+- Provides distraction-free title editing experience
+- Smooth transitions for better UX
+
 ---
 
 ### **CSS Files**
@@ -220,6 +230,8 @@ class ContentManager {
 - **Toolbar**: Formatting buttons with hover states
 - **Preview Styles**: Styled preview modal content
 - **Responsive**: Stacks panels vertically on mobile
+- **Smooth Transitions**: Form groups have transition effects for show/hide animations
+- **Focus States**: Enhanced styling for focused inputs
 
 ---
 
@@ -244,6 +256,8 @@ class ContentManager {
 - ✅ Real-time search across titles, content, and tags
 - ✅ Filter by category (Document, Note, Article, Draft)
 - ✅ Sort by: Newest, Oldest, Title, Recently Modified
+- ✅ **Dynamic Title Hiding**: Titles automatically hide when category filter is applied
+- ✅ Titles reappear when "All Categories" is selected
 
 ### 4. **Content Management**
 - ✅ Categories: Organize content by type
@@ -262,6 +276,8 @@ class ContentManager {
 - ✅ Preview mode before saving
 - ✅ Word/character counter
 - ✅ View mode (read-only)
+- ✅ **Focus Mode**: Form fields hide when title input is focused for distraction-free editing
+- ✅ **Dynamic UI**: Titles hide/show based on filter selection
 
 ### 6. **Data Persistence**
 - ✅ LocalStorage API for browser storage
@@ -460,6 +476,27 @@ grid.innerHTML = content.map(item => createContentCard(item)).join('');
 - Efficient single DOM update
 - Template literal for readability
 
+### **Focus-Based UI Hiding**
+```javascript
+titleInput.addEventListener('focus', () => {
+    otherFormGroups.forEach(group => {
+        group.style.display = 'none';
+    });
+});
+```
+- Hides form fields when title input is focused
+- Provides distraction-free editing experience
+- Smooth show/hide transitions
+
+### **Conditional Title Display**
+```javascript
+const hideTitle = categoryFilter !== '';
+grid.innerHTML = content.map(item => createContentCard(item, hideTitle)).join('');
+```
+- Dynamically hides titles based on filter selection
+- Improves focus when filtering by category
+- Titles reappear when filter is cleared
+
 ---
 
 ## 🎯 What We Added
@@ -485,6 +522,8 @@ grid.innerHTML = content.map(item => createContentCard(item)).join('');
 6. ✅ Error handling
 7. ✅ View mode (read-only)
 8. ✅ Back navigation
+9. ✅ **Focus Mode**: Hide form fields when editing title
+10. ✅ **Dynamic Title Visibility**: Hide titles when category filter is active
 
 ### **Code Quality**
 1. ✅ Modular architecture
