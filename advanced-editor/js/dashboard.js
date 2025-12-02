@@ -38,7 +38,6 @@ function createContentCard(item) {
             <div class="card-header">
                 <div>
                     <h3 class="card-title">${escapeHtml(item.title)}</h3>
-                    <span class="card-category">${item.category || 'document'}</span>
                 </div>
             </div>
             <p class="card-preview">${preview || 'No content preview available.'}</p>
