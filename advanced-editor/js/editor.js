@@ -21,6 +21,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const editor = document.getElementById('richTextEditor');
     editor.addEventListener('input', updateWordCount);
     updateWordCount();
+
+    // Hide other fields when title is focused
+    const titleInput = document.getElementById('contentTitle');
+    const otherFormGroups = document.querySelectorAll('.editor-form-panel .form-group:not(:first-child)');
+    
+    titleInput.addEventListener('focus', () => {
+        otherFormGroups.forEach(group => {
+            group.style.display = 'none';
+        });
+    });
+
+    titleInput.addEventListener('blur', () => {
+        otherFormGroups.forEach(group => {
+            group.style.display = 'block';
+        });
+    });
 });
 
 function setupNewContent() {

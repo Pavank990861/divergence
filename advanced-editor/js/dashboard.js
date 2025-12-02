@@ -14,6 +14,8 @@ function loadDashboard() {
 function renderContent(content) {
     const grid = document.getElementById('contentGrid');
     const emptyState = document.getElementById('emptyState');
+    const categoryFilter = document.getElementById('categoryFilter').value;
+    const hideTitle = categoryFilter !== ''; // Hide title when category is selected
 
     if (content.length === 0) {
         grid.style.display = 'none';
@@ -24,10 +26,10 @@ function renderContent(content) {
     grid.style.display = 'grid';
     emptyState.style.display = 'none';
 
-    grid.innerHTML = content.map(item => createContentCard(item)).join('');
+    grid.innerHTML = content.map(item => createContentCard(item, hideTitle)).join('');
 }
 
-function createContentCard(item) {
+function createContentCard(item, hideTitle = false) {
     const preview = truncateText(stripHtml(item.content));
     const tags = item.tags ? item.tags.split(',').map(t => t.trim()).filter(t => t) : [];
     const priorityClass = `priority-${item.priority || 'low'}`;
@@ -37,7 +39,7 @@ function createContentCard(item) {
             <div class="card-priority ${priorityClass}"></div>
             <div class="card-header">
                 <div>
-                    <h3 class="card-title">${escapeHtml(item.title)}</h3>
+                    <h3 class="card-title" style="${hideTitle ? 'display: none;' : ''}">${escapeHtml(item.title)}</h3>
                 </div>
             </div>
             <p class="card-preview">${preview || 'No content preview available.'}</p>

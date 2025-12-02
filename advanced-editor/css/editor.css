@@ -56,6 +56,8 @@
 /* Form Styles */
 .form-group {
     margin-bottom: 1.5rem;
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+    overflow: hidden;
 }
 
 .form-group label {
