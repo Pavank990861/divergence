@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Content Editor - Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-edit"></i> Advanced Content Editor</h1>
+                <button class="btn btn-primary" onclick="window.location.href='edit.html'">
+                    <i class="fas fa-plus"></i> Create New
+                </button>
+            </div>
+        </header>
+
+        <!-- Search and Filter Bar -->
+        <div class="toolbar">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search content..." onkeyup="filterContent()">
+            </div>
+            <div class="filter-group">
+                <select id="categoryFilter" onchange="filterContent()">
+                    <option value="">All Categories</option>
+                    <option value="document">Document</option>
+                    <option value="note">Note</option>
+                    <option value="article">Article</option>
+                    <option value="draft">Draft</option>
+                </select>
+                <select id="sortFilter" onchange="sortContent()">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                    <option value="title">Title A-Z</option>
+                    <option value="modified">Recently Modified</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="content-grid" id="contentGrid">
+            <!-- Content cards will be dynamically inserted here -->
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <i class="fas fa-file-alt"></i>
+            <h2>No Content Found</h2>
+            <p>Create your first content item to get started!</p>
+            <button class="btn btn-primary" onclick="window.location.href='edit.html'">
+                <i class="fas fa-plus"></i> Create New
+            </button>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
+

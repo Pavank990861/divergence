@@ -1,0 +1,328 @@
+/* Editor Styles */
+.editor-container {
+    min-height: 100vh;
+    background-color: var(--bg-color);
+}
+
+.editor-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-md);
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.editor-header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.editor-header-left h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.editor-header-right {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.editor-content {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 0;
+    min-height: calc(100vh - 80px);
+}
+
+.editor-form-panel {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-right: 1px solid var(--border-color);
+    overflow-y: auto;
+    box-shadow: var(--shadow-sm);
+}
+
+.editor-text-panel {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.required {
+    color: var(--danger-color);
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    transition: var(--transition);
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* Rich Text Editor */
+.editor-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.75rem 1rem;
+    background-color: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+    flex-wrap: wrap;
+}
+
+.toolbar-btn {
+    padding: 0.5rem 0.75rem;
+    border: none;
+    background: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+    border-radius: 4px;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.9rem;
+}
+
+.toolbar-btn:hover {
+    background-color: var(--card-bg);
+    color: var(--primary-color);
+}
+
+.toolbar-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.toolbar-separator {
+    width: 1px;
+    height: 24px;
+    background-color: var(--border-color);
+    margin: 0 0.25rem;
+}
+
+.rich-text-editor {
+    flex: 1;
+    padding: 2rem;
+    font-size: 1rem;
+    line-height: 1.8;
+    overflow-y: auto;
+    min-height: 400px;
+    outline: none;
+    color: var(--text-primary);
+}
+
+.rich-text-editor:empty:before {
+    content: attr(placeholder);
+    color: var(--text-secondary);
+    opacity: 0.5;
+}
+
+.rich-text-editor:focus {
+    outline: none;
+}
+
+.rich-text-editor h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 1.5rem 0 1rem;
+    color: var(--text-primary);
+}
+
+.rich-text-editor h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 1.25rem 0 0.75rem;
+    color: var(--text-primary);
+}
+
+.rich-text-editor p {
+    margin-bottom: 1rem;
+}
+
+.rich-text-editor ul,
+.rich-text-editor ol {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+.rich-text-editor li {
+    margin-bottom: 0.5rem;
+}
+
+.rich-text-editor a {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.rich-text-editor img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    margin: 1rem 0;
+}
+
+.rich-text-editor blockquote {
+    border-left: 4px solid var(--primary-color);
+    padding-left: 1rem;
+    margin: 1rem 0;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.rich-text-editor code {
+    background-color: var(--bg-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+}
+
+.rich-text-editor pre {
+    background-color: var(--bg-color);
+    padding: 1rem;
+    border-radius: var(--radius);
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+.rich-text-editor pre code {
+    background: none;
+    padding: 0;
+}
+
+.editor-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: var(--bg-color);
+    border-top: 1px solid var(--border-color);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.word-count,
+.char-count {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Preview Styles */
+#previewContent {
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+#previewContent h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+#previewContent h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 2rem 0 1rem;
+    color: var(--text-primary);
+}
+
+#previewContent h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 1.5rem 0 0.75rem;
+    color: var(--text-primary);
+}
+
+#previewContent p {
+    margin-bottom: 1rem;
+}
+
+#previewContent ul,
+#previewContent ol {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+#previewContent img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    margin: 1rem 0;
+}
+
+/* Responsive Editor */
+@media (max-width: 1024px) {
+    .editor-content {
+        grid-template-columns: 1fr;
+    }
+
+    .editor-form-panel {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        max-height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .editor-header {
+        padding: 1rem;
+    }
+
+    .editor-header-left h2 {
+        font-size: 1.25rem;
+    }
+
+    .editor-form-panel {
+        padding: 1.5rem;
+    }
+
+    .rich-text-editor {
+        padding: 1.5rem;
+    }
+
+    .editor-toolbar {
+        padding: 0.5rem;
+    }
+
+    .toolbar-btn {
+        padding: 0.4rem 0.5rem;
+        font-size: 0.85rem;
+    }
+}
+
+
+
