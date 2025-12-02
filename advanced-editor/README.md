@@ -2,6 +2,27 @@
 
 A modern, feature-rich web-based content management system built with vanilla JavaScript, HTML5, and CSS3.
 
+## 🌐 Live Demo
+
+### Option 1: GitHub Pages (Recommended)
+**🔗 [Open Live Demo](https://pavank990861.github.io/divergence/advanced-editor/)**
+
+*Note: To enable GitHub Pages, go to your repository Settings → Pages → Source: select `main` branch → Save*
+
+### Option 2: Open Locally
+1. Clone or download this repository
+2. Navigate to the `advanced-editor` folder
+3. Open `index.html` in your web browser
+
+**Direct File Path:**
+```
+file:///path/to/advanced-editor/index.html
+```
+
+### Quick Access
+- **Dashboard**: [index.html](index.html)
+- **Editor**: [edit.html](edit.html)
+
 ## Features
 
 ### ✨ Core Functionality
@@ -44,7 +65,12 @@ advanced-editor/
 ## Getting Started
 
 ### Installation
-No installation required! Just open `index.html` in your web browser.
+No installation required! 
+
+**Quick Start Options:**
+1. **GitHub Pages**: Visit the [Live Demo](https://pavank990861.github.io/divergence/advanced-editor/) link above
+2. **Local**: Download/clone the repository and open `index.html` in your browser
+3. **Direct File**: Right-click `index.html` → Open with → Your preferred browser
 
 ### Usage
 
